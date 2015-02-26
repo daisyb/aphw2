@@ -26,7 +26,18 @@ public class MergeSort{
 	return ans;
     }
 
-    //public ArrayList<Integer>
+    public ArrayList<Integer> sort(ArrayList<Integer> a){
+	ArrayList<Integer> b = new ArrayList<Integer>();
+	if(a.size() <= 0){
+	    return a;
+	} else {
+	    for(int i =0; i<(a.size()/2);i++){
+		b.add(a.remove(i));
+	    }
+	    merge(sort(a), sort(b));
+	}
+	return a;
+    }
 
 
     public static void main(String[] args){
