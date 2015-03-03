@@ -105,7 +105,7 @@ public class MergeSort{
 	ArrayList<Integer> a,b;
 	a = new ArrayList<Integer>();
 	b = new ArrayList<Integer>();
-	for(int i =0;i<52;i++){
+	for(int i =0;i<400000;i++){
 	    // a.add(i);
 	    // if(i%2 == 0){
 	    // 	b.add(i);
@@ -116,16 +116,17 @@ public class MergeSort{
 	//System.out.println(a + "\n\n");
 	//System.out.println(ms.sortList(a));
 	int[] c, d;
-	c = new int[52];
+	int len = 8000000;
+	c = new int[len];
 	d = new int[15];
-	for(int i = 0; i < 52; i++){
+	for(int i = 0; i < len; i++){
 	    //c[i] = i;
 	    //d[i] = 2*i;
 	    c[i] = rnd.nextInt(100);
 	}
 	//System.out.println(printArray(ms.merge(c,d)));
-	System.out.println(printArray(c) + "\n\n");
-	System.out.println(printArray(ms.sort(c)));
-
+	//System.out.println(printArray(c) + "\n\n");
+	//System.out.println(printArray(ms.sort(c)));
+	ms.sort(c);
     }
 }
