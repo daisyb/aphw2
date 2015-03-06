@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Selection{
     
-
+    /*
     //Not working
     public int[] partition(int[] L, int SI, int EI){
 	int[] D = new int[L.length];
@@ -34,6 +34,29 @@ public class Selection{
 	D[SI] = pivot;
 	return D;
     }
+    */
+    public int[] partition(int[] A, int L, int H){
+	int pivot = A[L];
+	int pivotIndex = L;
+	System.out.println("pivot=" + pivot);
+	A[L] = A[H];
+	A[H] = pivot;
+	while(L < H){
+	    if(A[L] < pivot){
+		L++;
+	    }else {
+		int temp = A[L];
+		A[L] = A[H];
+		A[H] = temp;
+		H--;
+	    }
+	}
+	
+	A[pivotIndex] = A[H];
+	A[H] = pivot;
+	return A;
+    }
+	
 
     public void printArray(int[] a){
 	String s = "[";
@@ -51,7 +74,7 @@ public class Selection{
 	    a[i] = r.nextInt(20);
 	}
 	s.printArray(a);
-	s.printArray(s.partition(a,5,a.length-1));
+	s.printArray(s.partition(a,0,a.length-1));
     }
 }
 		    
