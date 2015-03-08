@@ -3,44 +3,13 @@ import java.io.*;
 
 public class Selection{
     
-    /*
-    //Not working
-    public int[] partition(int[] L, int SI, int EI){
-	int[] D = new int[L.length];
-	//int pivotIndex = SI;
-	int pivot = L[SI];
-	SI += 1;
-	System.out.println(pivot);
-	for(int i = 0; i < L.length;i++){
-	    //printArray(D);
-	    //if(i != pivotIndex){
-		if(i < SI || i > EI){
-		    D[i] = L[i];
-		    System.out.println("a");
-		} else {
-		    if(L[i] < pivot){
-			D[SI] = L[i];
-			SI++;
-			System.out.println("b");
-		    } else if (L[i] > pivot){
-			D[EI] = L[i];
-			EI--;
-			System.out.println('c');
-		    
-		    }
-		}
-		// }
-	}
-	D[SI] = pivot;
-	return D;
-    }
-    */
-    public int[] partition(int[] A, int L, int H){
+    //K follows 0-based indexing
+    public int Select(int[] A, int K, int L, int H){ 
 	int pivot = A[L];
-	int pivotIndex = L;
-	System.out.println("pivot=" + pivot);
 	A[L] = A[H];
 	A[H] = pivot;
+	int pivotIndex = H;
+	H--;
 	while(L < H){
 	    if(A[L] < pivot){
 		L++;
@@ -51,11 +20,18 @@ public class Selection{
 		H--;
 	    }
 	}
-	
 	A[pivotIndex] = A[H];
 	A[H] = pivot;
-	return A;
+	if(K-1 > H){ //-1 to match from 0-indexing
+	    return Select(A,K,H+1,A.length-1);
+	} else if (K-1<H){
+	    return Select(A,K,0,H-1);
+	}
+	return pivot;
+	
+	
     }
+
 	
 
     public void printArray(int[] a){
@@ -74,7 +50,9 @@ public class Selection{
 	    a[i] = r.nextInt(20);
 	}
 	s.printArray(a);
-	s.printArray(s.partition(a,0,a.length-1));
+	//s.printArray(s.partition(a,0,a.length-1));
+	int K = 4;
+	System.out.println("Element #" + K+ ": " + s.Select(a,K,0,a.length-1));
     }
 }
 		    
