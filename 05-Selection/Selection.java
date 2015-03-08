@@ -3,7 +3,6 @@ import java.io.*;
 
 public class Selection{
     
-    //K follows 0-based indexing
     public int Select(int[] A, int K, int L, int H){ 
 	int pivot = A[L];
 	A[L] = A[H];
