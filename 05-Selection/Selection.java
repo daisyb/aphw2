@@ -4,6 +4,8 @@ import java.io.*;
 public class Selection{
     
     public int Select(int[] A, int K, int L, int H){ 
+	int h = H;
+	int l = L;
 	int pivot = A[L];
 	A[L] = A[H];
 	A[H] = pivot;
@@ -22,9 +24,9 @@ public class Selection{
 	A[pivotIndex] = A[H];
 	A[H] = pivot;
 	if(K-1 > H){ //-1 to match from 0-indexing
-	    return Select(A,K,H+1,A.length-1);
+	    return Select(A,K,H+1,h);
 	} else if (K-1<H){
-	    return Select(A,K,0,H-1);
+	    return Select(A,K,l,H-1);
 	}
 	return pivot;
 	
