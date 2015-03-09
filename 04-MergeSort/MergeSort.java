@@ -116,7 +116,7 @@ public class MergeSort{
 	//System.out.println(a + "\n\n");
 	//System.out.println(ms.sortList(a));
 	int[] c, d;
-	int len = 8000000;
+	int len = 50000000;
 	c = new int[len];
 	d = new int[15];
 	for(int i = 0; i < len; i++){
