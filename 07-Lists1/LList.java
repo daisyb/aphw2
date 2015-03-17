@@ -1,5 +1,11 @@
 public class LList {
-    private Node l=null;
+    private Node l;
+    private int len;
+
+    public LList(){
+	l = new Node();
+	len = 0;
+    }
 
     public void add(String s){
 	Node tmp = new Node(s);
@@ -7,7 +13,10 @@ public class LList {
 	l = tmp;
     }
 
-    public Node find(int n){
+    //public void add(String) to front
+    //public void add(index, String)
+
+    public Node get(int n){
 	int i = 0;
 	Node tmp = l;
 	while(i<n && tmp != null){
@@ -17,6 +26,10 @@ public class LList {
       
 	return tmp;
     }
+
+    
+    //public booleabn remove(Node n)
+    
 	    
     public void insert(int n, String s){
 	Node newNode = new Node(s);
