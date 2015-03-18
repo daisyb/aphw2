@@ -28,7 +28,7 @@ public class LList {
 
     public int get(int n){
 	if(n >= len){
-	    return -1;
+	    throw new IndexOutOfBoundsException();
 	}
 	int i = 0;
 	Node tmp = empty.getNext();
@@ -39,15 +39,8 @@ public class LList {
       
 	return tmp.getData();
     }
-
-    /*
-    public void remove(int n){
-	Node tmp = get(n-1);
-	tmp.setNext(tmp.getNext().getNext());
-	len--;
-    }
-    */
     
+    /*
     public int remove(int n){
 	if(n>= this.len || n <0){
 	    return -1;
@@ -60,6 +53,20 @@ public class LList {
 	T.setNext(T.getNext().getNext());
 	len--;
 	return s;
+    }
+    */
+    
+    public boolean remove(int i){
+	Node tmp= empty;
+	for(int j=0;j<len;j++){
+	    if(tmp.getNext().getData() == i){
+		tmp.setNext(tmp.getNext().getNext());
+		len--;
+		return true;
+	    }
+	    tmp = tmp.getNext();
+	}
+	return false;
     }
 	
     

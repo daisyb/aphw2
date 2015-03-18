@@ -1,54 +1,77 @@
 public class LList {
-    private Node l;
+    private Node empty;
     private int len;
 
     public LList(){
-	l = new Node();
+	empty = new Node(-1);
 	len = 0;
     }
 
-    public void add(String s){
+    public void add(int s){
 	Node tmp = new Node(s);
-	tmp.setNext(l);
-	l = tmp;
+	tmp.setNext(empty.getNext());
+	empty.setNext(tmp);
+	len++;
     }
 
-    //public void add(String) to front
-    //public void add(index, String)
+	    
+    public void add(int index, int s){
+	Node newNode = new Node(s);	
+	Node nodeb4 = empty.getNext();
+	for(int i =0;i<index-1;i++){
+	    nodeb4 = nodeb4.getNext();
+	}
+	newNode.setNext(nodeb4.getNext());
+	nodeb4.setNext(newNode);
+	len++;
+    }
 
-    public Node get(int n){
+    public int get(int n){
+	if(n >= len){
+	    return -1;
+	}
 	int i = 0;
-	Node tmp = l;
-	while(i<n && tmp != null){
+	Node tmp = empty.getNext();
+	while(i<n && i <len){
 	    tmp = tmp.getNext();
 	    i++;
 	}
       
-	return tmp;
+	return tmp.getData();
     }
 
+    /*
+    public void remove(int n){
+	Node tmp = get(n-1);
+	tmp.setNext(tmp.getNext().getNext());
+	len--;
+    }
+    */
     
-    //public booleabn remove(Node n)
-    
-	    
-    public void insert(int n, String s){
-	Node newNode = new Node(s);
-	if(n == 0){
-	    newNode.setNext(l);
-	    l = newNode;
-	} else {
-	    Node nodeb4 = find(n-1);
-	    newNode.setNext(nodeb4.getNext());
-	    nodeb4.setNext(newNode);
+    public int remove(int n){
+	if(n>= this.len || n <0){
+	    return -1;
 	}
-
+	Node T = empty.getNext();
+	for(int i =0;i<n-1;i++){
+	    T = T.getNext();
+	}
+	int s = T.getNext().getData();
+	T.setNext(T.getNext().getNext());
+	len--;
+	return s;
+    }
+	
+    
+    public int size(){
+	return len;
     }
 	
 
     public String toString(){
 	String s = "";
 	Node tmp;
-	for (tmp = l; tmp != null; tmp=tmp.getNext()){
+	for (tmp = empty.getNext(); tmp != null; tmp=tmp.getNext()){
 	    s = s + tmp + " --> ";
 	}
 	s = s + "null";
