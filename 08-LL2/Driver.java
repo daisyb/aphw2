@@ -13,5 +13,8 @@ public class  Driver{
 	l.add(0,"W");
 	l.add(3,"c");
 	System.out.println(l);
+	l.remove(5);
+	l.remove(20);
+	System.out.println(l);
     }
 }

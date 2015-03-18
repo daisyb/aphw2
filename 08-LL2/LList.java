@@ -1,22 +1,27 @@
 public class LList {
-    private Node empty,l;
+    private Node empty;
     private int len;
 
     public LList(){
 	empty = new Node(" ");
-	l = null;
-	empty.setNext(l);
 	len = 0;
     }
 
     public void add(String s){
 	Node tmp = new Node(s);
+	tmp.setNext(empty.getNext());
 	empty.setNext(tmp);
-	tmp.setNext(l);
-	l = tmp;
 	len++;
     }
 
+	    
+    public void add(int index, String s){
+	Node newNode = new Node(s);	
+	Node nodeb4 = get(index-1);
+	newNode.setNext(nodeb4.getNext());
+	nodeb4.setNext(newNode);
+	len++;
+    }
 
     public Node get(int n){
 	int i = -1;
@@ -30,22 +35,22 @@ public class LList {
     }
 
     
-    //public booleabn remove(Node n)
+    public void remove(int n){
+	Node tmp = get(n-1);
+	tmp.setNext(tmp.getNext().getNext());
+	len--;
+    }
     
-	    
-    public void add(int index, String s){
-	Node newNode = new Node(s);	
-	Node nodeb4 = get(index-1);
-	newNode.setNext(nodeb4.getNext());
-	nodeb4.setNext(newNode);
-       
+    
+    public int size(){
+	return len;
     }
 	
 
     public String toString(){
 	String s = "";
 	Node tmp;
-	for (tmp = l; tmp != null; tmp=tmp.getNext()){
+	for (tmp = empty.getNext(); tmp != null; tmp=tmp.getNext()){
 	    s = s + tmp + " --> ";
 	}
 	s = s + "null";
