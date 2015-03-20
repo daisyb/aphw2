@@ -18,6 +18,7 @@ public class LLit<E> implements Iterator<E>{
     }
 
     public void remove() {
-	// fill this in later
+	Node<E> nb4;
+	Node<E> current;
     }
 }
