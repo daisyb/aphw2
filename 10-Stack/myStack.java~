@@ -1,0 +1,16 @@
+public class myStack<E>{
+    public Node<E> l;
+
+    public myStack<E>(){
+	l = null;
+    }
+
+    public void push(E data){
+	data.setNext(l);
+	l = data;
+    }
+
+    public E pop(){
+	
+	
+    }
