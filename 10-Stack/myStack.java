@@ -1,4 +1,5 @@
 public class myStack<E>{
+
     public Node<E> l;
 
     public myStack(){
@@ -12,19 +13,22 @@ public class myStack<E>{
     }
 
     public E pop(){
-	Node<E> tmp = l;
+	if(empty()){
+	    throw new NullPointerException();
+	}
+	E tmp = l.getData();
 	l = l.getNext();
-	return tmp.getData();
+	return tmp;
     }
 
     public boolean empty(){
-	if(l != null){
-	    return false;
-	}
-	return true;
+	return l == null;
     }
 
     public E top(){
+	if(empty()){
+	    throw new NullPointerException();
+	}
 	return l.getData();
     }
 
