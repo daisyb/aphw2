@@ -1,3 +1,5 @@
+
+
 public class myQueue<E>{
     Node<E> first;
     Node<E> last;
@@ -47,6 +49,9 @@ public class myQueue<E>{
 
     public static void main(String[] args){
 	myQueue<Integer> q = new myQueue<Integer>();
-	System.out.print(q.empty());
+	System.out.println(q.empty());
 	q.enqueue(7);
+	System.out.println(q);
 	
+    }
+}
