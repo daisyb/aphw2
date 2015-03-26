@@ -10,10 +10,10 @@ public class arrayQueue{
     public void enqueue(int data){
 	length++;
 	int[] tmp = new int[length];
-	tmp[0] = data;
 	for (int i = 0; i<q.length; i++){
-	    tmp[i+1] = q[i];
+	    tmp[i] = q[i];
 	}
+	tmp[length-1] = data;
 	q = tmp;
     }
 
@@ -37,11 +37,12 @@ public class arrayQueue{
 	if(empty()){
 	    return 0;
 	}
-	return q[0];
+	return q[length-1];
     }
 
     public String toString(){
 	String s = "";
+	
 	for (int i = 0; i<length; i++){
 	    s += q[i] + " ";
 	}
