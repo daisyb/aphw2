@@ -15,8 +15,7 @@ public class myQueue<E>{
 	if(first != null){
 	    last.setNext(tmp);
 	}else {
-	    first = tmp;
-	
+	    first = tmp;	
 	}
 	
 	last = tmp;
@@ -30,6 +29,9 @@ public class myQueue<E>{
 	E data = first.getData();
 	first = first.getNext();
 	length--;
+	if(fist == null){
+	    last = null;
+	}
 	return data;
     }
 
