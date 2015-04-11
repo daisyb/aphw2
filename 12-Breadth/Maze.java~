@@ -15,11 +15,13 @@ public class Maze
     private char exit='$';
     private char visited = '.';
     private boolean solved = false;
+
     public void delay(int n){
 	try {
 	    Thread.sleep(n);
 	} catch (Exception e) {}
     }
+
     public Maze()
     {
 	maxX=40;
@@ -42,6 +44,7 @@ public class Maze
 	    {
 	    }
     }
+
     public String toString()
     {
 	String s = "[2J\n";
@@ -53,6 +56,7 @@ public class Maze
 	    }
 	return s;
     }
+
     public void solve(int x, int y){
 	Node n=new Node(x,y);
 	q.enQueue(n);

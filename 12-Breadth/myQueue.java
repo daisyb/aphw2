@@ -26,7 +26,7 @@ public class myQueue{
 	Node tmp = first;
 	first = first.getNext();
 	length--;
-	if(fist == null){
+	if(first == null){
 	    last = null;
 	}
 	return tmp;
@@ -40,7 +40,7 @@ public class myQueue{
 	if(empty()){
 	    return null;
 	}
-	return Node;
+	return first;
     }
 
     public String toString(){
