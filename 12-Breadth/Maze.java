@@ -2,19 +2,18 @@ import java.io.*;
 import java.util.*;
 public class Maze {
 
-    private myQueue q = new myQueue();
-    private myStack s = new myStack();
+    myQueue q = new myQueue();
 	
-    private char[][] board;
-    private int maxX;
-    private int maxY;
-    private char path='#';
-    private char wall=' ';
-    private char me='z';
-    private char exit='$';
-    private char visited = '.';
-    private boolean solved = false;
-    private Node end; 
+    char[][] board;
+    int maxX;
+    int maxY;
+    char path='#';
+    char wall=' ';
+    char me='z';
+    char exit='$';
+    char visited = '.';
+    boolean solved = false;
+    Node end; 
 
     public void delay(int n){
 	try {
@@ -133,70 +132,6 @@ public class Maze {
 	return end;
     }
 
-    public Node stackSolve(int x, int y){
-	Node n=new Node(x,y);
-	s.push(n);
-	Node end = new Node();
-	while (!s.empty() && !solved) {
-	    delay(50);
-	    System.out.println(this);
-	    Node current=s.pop();
-	    char c = current.getChar();
-	    int cx=current.getx();
-	    int cy=current.gety();
-	    if(c >= 'Z'){
-		c = 'A';
-	    }else {	
-		c = (char)(c+1);
-	    }
-	    if(withinBounds(cx+1,cy) &&
-	       board[cx+1][cy] == path){
-		//c = (char)(c+1);
-		board[cx+1][cy] = c;
-		Node n1=new Node(cx+1,cy,c);
-		s.push(n1);
-	    } else if(isExit(cx+1,cy)){
-		end = new Node(cx+1,cy,'$');
-		return end;
-	    }
-
-	    if (withinBounds(cx-1,cy) &&
-		board[cx-1][cy] == path){
-		//c = (char)(c+1);
-		board[cx-1][cy] = c;
-		Node n2=new Node(cx-1,cy,(char)(c+1));
-		s.push(n2);
-	    }else if(isExit(cx-1,cy)){
-		end = new Node(cx-1,cy,'$');
-		return end;
-	    }
-
-	    if(withinBounds(cx,cy+1) &&
-	       board[cx][cy+1] == path){
-		//c = (char)(c+1);
-		board[cx][cy+1] = c;
-		Node n3=new Node(cx,cy+1,(char)(c+1));
-		s.push(n3);
-	    }else if(isExit(cx,cy+1)){
-		end = new Node(cx,cy+1,'$');
-		return end;
-	    }
-
-	    if(withinBounds(cx,cy-1) &&
-	       board[cx][cy-1] == path){
-		//c = (char)(c+1);
-		board[cx][cy-1] = c;
-		Node n4=new Node(cx,cy-1,(char)(c+1));
-		s.push(n4);
-	    }else if(isExit(cx,cy-1)){
-		end = new Node(cx,cy-1,'$');
-		return end;
-	    }
-
-	}
-	System.out.println(this);
-	return end;
-    }
 
 
 

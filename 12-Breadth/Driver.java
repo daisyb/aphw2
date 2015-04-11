@@ -6,7 +6,8 @@ public class Driver {
 	// System.out.println(n.getNext().getx());
 	// System.out.println(n2);
 	Maze m = new Maze();
-	System.out.println(m.stackSolve(1,1));
+	MazeStack ms = new MazeStack();
+	System.out.println(m.solve(1,1));
     }
 }
 
