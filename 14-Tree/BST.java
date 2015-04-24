@@ -66,8 +66,9 @@ public class BST{
 	
     public String toString(Node t, String s){
 	if(t != null){
-	    toString(t.getLeft(), s+t.toString());
-	    toString(t.getRight(),s+t.toString());
+	    s += t.toString();
+	    toString(t.getLeft(), s);
+	    toString(t.getRight(),s);
 	}
 	return s;
     }
