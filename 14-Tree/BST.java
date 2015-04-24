@@ -50,7 +50,7 @@ public class BST{
 
     public Node rSearch(Node t, int i){
 	if(t==null){
-	    throw new UnsupportedOperationException();
+	    return null;
 	}
 
 	if(t.getData() < i){
