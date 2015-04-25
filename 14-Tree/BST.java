@@ -47,30 +47,28 @@ public class BST{
 	}
 	return null;
     }
-
+    
     public Node rSearch(Node t, int i){
 	if(t==null){
 	    return null;
 	}
-
 	if(t.getData() < i){
-	    rSearch(t.getRight(),i);
+	    return rSearch(t.getRight(),i);
 	} else if (t.getData() > i){
-	    rSearch(t.getLeft(),i);
+	    return rSearch(t.getLeft(),i);
 	}
 
 	return t;  
 	
     }
 	
-	
-    public String toString(Node t, String s){
-	if(t != null){
-	    s += t.toString();
-	    toString(t.getLeft(), s);
-	    toString(t.getRight(),s);
+    //not really sure how to format a tree but this atleast prints everything
+    public String toString(Node t){
+	if(t == null){
+	    return "";
 	}
-	return s;
+	String s = t.toString();
+	return s + toString(t.getLeft()) + toString(t.getRight());
     }
     
     public static void main(String[] args){
@@ -79,7 +77,8 @@ public class BST{
 	b.insert(r, 20);
 	b.insert(r,28);
 	b.insert(r,35);
-	System.out.println(b.toString(r,""));
+	System.out.println(b.toString(r));
+	System.out.println(b.search(r,35));
     }
 	
 	    
