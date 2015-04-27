@@ -81,16 +81,15 @@ public class BST{
 	return traverse(root);
     }
 
-    public String ascendHelp(Node t){
+    public String ascend(Node t){
 	if(t == null){
 	    return "";
 	}
-
-	return ascendHelp(t.getLeft()) +  t.getData() + ", " + ascendHelp(t.getRight());
+	return ascend(t.getLeft()) +  t.getData() + ", " + ascend(t.getRight());
     }
 
     public String ascend(){
-	return ascendHelp(root);
+	return ascend(root);
     }
     
     public static void main(String[] args){
