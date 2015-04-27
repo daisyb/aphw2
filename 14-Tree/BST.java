@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class BST{
 
     private Node root;
@@ -9,19 +11,19 @@ public class BST{
     public BST(Node n){
 	root = n;
     }
-
-    public void insert(Node t, int i){
+    
+    public void insert(int i){
+	Node t = root;
+	Node piggy = t;
 	if(t == null){
 	    t = new Node(i);
 	}
-	Node piggy = new Node();
-
+	
 	while(t!=null){
+	    piggy = t;
 	    if(t.getData()<i){
-		piggy =t;
 		t=t.getRight();
 	    } else if(t.getData()>i) {
-		piggy =t;
 		t=t.getLeft();
 	    } else {
 		return;
@@ -35,7 +37,8 @@ public class BST{
 	}
     }
 
-    public Node search(Node t, int i){
+    public Node search(int i){
+	Node t = root;
 	while(t!=null){
 	    if(t.getData() < i){
 		t = t.getRight();
@@ -61,24 +64,44 @@ public class BST{
 	return t;  
 	
     }
-	
+
+    public Node rSearch(int i){
+	return rSearch(root,i);
+    }
+    
     //not really sure how to format a tree but this atleast prints everything
-    public String toString(Node t){
+    public String traverse(Node t){
 	if(t == null){
 	    return "";
 	}
-	String s = t.toString();
-	return s + toString(t.getLeft()) + toString(t.getRight());
+	return t.getData() + ", " + traverse(t.getLeft()) + traverse(t.getRight());
+    }
+
+    public String toString(){
+	return traverse(root);
+    }
+
+    public String ascendHelp(Node t){
+	if(t == null){
+	    return "";
+	}
+
+	return ascendHelp(t.getLeft()) +  t.getData() + ", " + ascendHelp(t.getRight());
+    }
+
+    public String ascend(){
+	return ascendHelp(root);
     }
     
     public static void main(String[] args){
-	BST b = new BST();
+	Random rnd = new Random();
 	Node r = new Node(40);
-	b.insert(r, 20);
-	b.insert(r,28);
-	b.insert(r,35);
-	System.out.println(b.toString(r));
-	System.out.println(b.search(r,35));
+	BST b = new BST(r);
+	for(int i=0;i<10;i++){
+	    b.insert(10*rnd.nextInt(10));
+	}
+	System.out.println(b);
+	System.out.println(b.ascend());
     }
 	
 	    
