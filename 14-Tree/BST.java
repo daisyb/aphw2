@@ -69,7 +69,6 @@ public class BST{
 	return rSearch(root,i);
     }
     
-    //not really sure how to format a tree but this atleast prints everything
     public String traverse(Node t){
 	if(t == null){
 	    return "";
@@ -77,9 +76,6 @@ public class BST{
 	return t.getData() + ", " + traverse(t.getLeft()) + traverse(t.getRight());
     }
 
-    public String toString(){
-	return traverse(root);
-    }
 
     public String ascend(Node t){
 	if(t == null){
@@ -88,10 +84,11 @@ public class BST{
 	return ascend(t.getLeft()) +  t.getData() + ", " + ascend(t.getRight());
     }
 
-    public String ascend(){
+    
+    public String toString(){
 	return ascend(root);
     }
-    
+  
     public static void main(String[] args){
 	Random rnd = new Random();
 	Node r = new Node(40);
