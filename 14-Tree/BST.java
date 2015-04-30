@@ -5,6 +5,7 @@ public class BST{
     private Node root;
 
     public BST(){
+	Node head = new Node(MIN_VAlUE);
 	root = null;
     }
 
@@ -59,6 +60,11 @@ public class BST{
 		right = false;
 	    }
 	}
+	boolean isRoot = false;
+	if(t == root){
+	    isRoot = true;
+	}
+	
 	if(t.numKids()==0){
 	    if(right){
 		piggy.setRight(null);
@@ -86,8 +92,11 @@ public class BST{
 		L2 = L;
 		L = L.getLeft();
 	    }
-	    t = L;
+	    System.out.println(L2);
+	    t.setData(L.getData());
+	    System.out.println(L2);
 	    L2.setLeft(null);
+	    
 	}
 	    	    
 	    
@@ -156,7 +165,7 @@ public class BST{
 	    b.insert(10*rnd.nextInt(10));
 	}
 	System.out.println(b);
-	b.remove(30);
+	b.remove(40);
 	System.out.println(b);
     }
 	
