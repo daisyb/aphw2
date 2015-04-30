@@ -48,7 +48,7 @@ public class BST{
     public void remove(int i){	
 	Node t = root;
 	Node piggy = t;
-	boolean right;
+	boolean right = true;
 	while(t.getData()!=i && t!=null){
 	    piggy = t;
 	    if(t.getData()<i){
@@ -81,19 +81,18 @@ public class BST{
 		}
 	    }
 	} else {
-	    L = t.getRight();
-	    L2 = t;
+	    Node L = t.getRight();
+	    Node L2 = t;
 	    while (L.getLeft() != null){
-		L2 = L
+		L2 = L;
 		L = L.getLeft();
 	    }
 	    t = L;
 	    L2.setLeft(null);
 	}
+	    	    
 	    
-	    
-	    
-	}
+    }
 	    
 		 
 	
@@ -158,7 +157,6 @@ public class BST{
 	    b.insert(10*rnd.nextInt(10));
 	}
 	System.out.println(b);
-	System.out.println(b.ascend());
     }
 	
 	    
