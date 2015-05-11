@@ -5,7 +5,7 @@ public class BST{
     private Node root;
 
     public BST(){
-	Node head = new Node(MIN_VAlUE);
+	//Node head = new Node(MIN_VAlUE);
 	root = null;
     }
 
@@ -44,7 +44,7 @@ public class BST{
       b)if only has one child, set parent left/right to child
       c)if 2 children, find largest left or smallest right node and copy data 
       into location of node being removed.
-    */
+    
     
     public void remove(int i){	
 	Node t = root;
@@ -101,9 +101,31 @@ public class BST{
 	    	    
 	    
     }
-	    
+    */	    
 		 
-	
+    public int maxValue(Node t, int n){
+	if(t == null){
+	    return n;
+	} else if(t.getData() > n){
+	    return maxValue(t.getRight(), t.getData()); 
+	} else {
+	    return maxValue(t.getRight(), n);
+	}
+    }
+
+    public int maxValue(){
+	return maxValue(root,Integer.MIN_VALUE);
+    }
+
+    public int height(Node t){
+	if(t.getLeft() != null){
+	    return 1+ height(t.getLeft());
+	} else if (t.getRight() != null){
+	    return 1 +height(t.getRight());
+	} else {
+	    return 1;
+	}
+    }
     
     public Node search(int i){
 	Node t = root;
@@ -154,7 +176,7 @@ public class BST{
 
     
     public String toString(){
-	return ascend(root);
+	return traverse(root);
     }
   
     public static void main(String[] args){
@@ -165,7 +187,7 @@ public class BST{
 	    b.insert(10*rnd.nextInt(10));
 	}
 	System.out.println(b);
-	b.remove(40);
+	System.out.println(b.height(r));
 	System.out.println(b);
     }
 	
